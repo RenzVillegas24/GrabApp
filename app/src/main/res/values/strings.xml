@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">Pet App</string>
+    <string name="special_grooming">Special Grooming</string>
+    <string name="php_1000">Php 1000</string>
+    <string name="the_special_grooming_service_goes_beyond_basic_hygiene_and_includes_styling_the_pet_s_fur_to_enhance_its_appearance">The special grooming service goes beyond basic hygiene and includes styling the pet\'s fur to enhance its appearance.</string>
+    <string name="the_main_difference_from_basic_grooming_is_that_special_grooming_involves_artistic_and_breed_specific_fur_styling_while_basic_grooming_only_involves_minimal_trimming_to_maintain_cleanliness">The main difference from basic grooming is that special grooming involves artistic and breed-specific fur styling, while basic grooming only involves minimal trimming to maintain cleanliness.</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="back">Back</string>
+    <string name="service_added_to_cart">Service Added to Cart</string>
+    <string name="view_cart">View Cart</string>
+    <string name="basic_grooming">Basic Grooming</string>
+    <string name="php_500">Php 500</string>
+    <string name="a_basic_grooming_service_includes_essential_care_to_maintain_the_pet_s_hygiene_and_appearance">A basic grooming service includes essential care to maintain the pet’s hygiene and appearance.</string>
+    <string name="this_service_helps_keep_the_pet_clean_reduces_shedding_prevents_matting_and_can_also_contribute_to_overall_health_by_keeping">This service helps keep the pet clean, reduces shedding, prevents matting, and can also contribute to overall health by keeping</string>
+    <string name="cart"><![CDATA[< Cart]]></string>
+    <string name="php_1_000_00">Php 1,000.00</string>
+    <string name="_1">– 1 +</string>
+    <string name="delete">Delete</string>
+    <string name="vaccination">Vaccination</string>
+    <string name="php_1_200_00">Php 1,200.00</string>
+    <string name="_2">– 2 +</string>
+    <string name="add_more">Add More</string>
+    <string name="place_order">Place Order</string>
+    <string name="total">Total</string>
+    <string name="php_3_400_00">Php 3,400.00</string>
+    <string name="additional_fees">Additional Fees</string>
+    <string name="none">–</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="deworming">Deworming</string>
+    <string name="php_600">Php 600</string>
+    <string name="a_pet_deworming_service_involves_the_administration_of_medication_to_eliminate_internal_parasites_such_as_roundworms_hookworms_tapeworms_and_whipworms">A pet deworming service involves the administration of medication to eliminate internal parasites such as roundworms, hookworms, tapeworms, and whipworms.</string>
+    <string name="this_service_is_essential_for_maintaining_the_overall_health_of_pets_as_worms_can_cause_serious_health_issues_such_as_malnutrition_digestive_problems_and_even_organ_damage">This service is essential for maintaining the overall health of pets, as worms can cause serious health issues such as malnutrition, digestive problems, and even organ damage.</string>
+    <string name="ear_cleaning">Ear Cleaning</string>
+    <string name="php_150">Php 150</string>
+    <string name="pet_ear_cleaning_is_a_grooming_service_focused_on_maintaining_a_pet_s_ear_health_by_gently_removing_dirt_wax_buildup_and_debris_from_the_ear_canal_and_outer_ear_using_veterinarian_approved_ear_cleaning_solutions_the_process_helps_to_prevent_infections_irritation_and_ear_mites">Pet ear cleaning is a grooming service focused on maintaining a pet\'s ear health by gently removing dirt, wax buildup, and debris from the ear canal and outer ear. Using veterinarian-approved ear cleaning solutions, the process helps to prevent infections, irritation, and ear mites.</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="view_profile">View Profile</string>
+    <string name="john_doe">John Doe</string>
+    <string name="services_available">Services Available</string>
+    <string name="pet_bath">Pet Bath</string>
+    <string name="nail_trimming">Nail Trimming</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+    <string name="log_in">Log In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="php_100">Php 100</string>
+    <string name="pet_nail_trimming_is_a_grooming_service_that_involves_carefully_cutting_a_pet_s_nail_to_a_safe_length_using_specialized_clippers_or_grinders_this_process_helps_prevent_overgrown_nails_which_can_cause_discomfort_pain_and_even_injury_to_pets_when_they_walk_or_run">Pet nail trimming is a grooming service that involves carefully cutting a pet\'s nail to a safe length using specialized clippers or grinders. This process helps prevent overgrown nails, which can cause discomfort, pain, and even injury to pets when they walk or run.</string>
+    <string name="trimming_also_reduces_the_risk_of_nails_snagging_or_breaking_which_can_lead_to_infections">Trimming also reduces the risk of nails snagging or breaking which can lead to infections.</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="address">Address</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="order_placed">Order Placed!</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="back_arrow"><![CDATA[< Back]]></string>
+    <string name="date">Date</string>
+    <string name="status_completed">Status: Completed</string>
+    <string name="php_350_00">Php 350.00</string>
+    <string name="x_2">x 2</string>
+    <string name="php_150_00">Php 150.00</string>
+    <string name="php_600_00">Php 600.00</string>
+    <string name="x_1">x 1</string>
+    <string name="status_ongoing">Status: Ongoing</string>
+    <string name="a_pet_bath_service_involves_thoroughly_cleaning_the_pet_s_coat_and_skin_using_pet_safe_shampoos_and_conditioners_tailored_to_the_specific_needs_of_the_pet_s_breed_and_skin_type">A pet bath service involves thoroughly cleaning the pet\'s coat and skin using pet-safe shampoos and conditioners, tailored to the specific needs of the pet\'s breed and skin type.</string>
+    <string name="this_process_not_only_removes_dirt_allergens_and_loose_fur_but_also_helps_in_maintaining_a_healthy_shiny_coat_the_service_also_includes_drying_the_pet_s_fur">This process not only removes dirt, allergens, and loose fur but also helps in maintaining a healthy, shiny coat. The service also includes drying the pet\'s fur.</string>
+    <string name="a_pet_rabies_vaccination_service_provides_essential_protection_against_the_rabies_virus_a_deadly_disease_that_affects_both_animals_and_humans_the_vaccine_is_administered_by_a_veterinarian_and_is_typically_required_by_law_to_ensure_public_health_safety">A pet rabies vaccination service provides essential protection against the rabies virus, a deadly disease that affects both animals and humans. The vaccine is administered by a veterinarian and is typically required by law to ensure public health safety.</string>
+    <string name="this_service_not_only_shields_pets_from_the_virus_but_also_prevents_the_spread_of_rabies_through_bites_or_scratches">This service not only shields pets from the virus but also prevents the spread of rabies through bites or scratches.</string>
+    <string name="checkout">Checkout</string>
+    <string name="services"><![CDATA[< Services]]></string>
+    <string name="user_details">User Details</string>
+    <string name="contact_no">Contact No.</string>
+    <string name="transactions">Transactions</string>
+    <string name="order_status"><![CDATA[Order Status >]]></string>
+    <string name="order_history"><![CDATA[Order History >]]></string>
+    <string name="to_rate"><![CDATA[To Rate >]]></string>
+    <string name="welcome_back_to_pawsome_home">Welcome back to\nPawsome Home!</string>
+    <string name="create_new_account">Create\nNew Account</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password\n</string>
+    <string name="select_animal_type">Other</string>
+
+    <string-array name="animal_types">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Bird</item>
+        <item>Other</item>
+    </string-array>
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="?attr/colorPrimaryContainer"
+    android:layout_height="match_parent"
+    tools:context=".controllers.WelcomeFragment"
+    >
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="24dp"
+        android:src="@drawable/ic_icon"
+        app:tint="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Add a Pattern Image View which fills the entire screen -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/pattern_repeat" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Pawsome Home"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginHorizontal="4dp"
+            android:fontFamily="@font/adlam_display_regular"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/subtitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We love pets!\nLet's take care of them together."
+            android:layout_marginHorizontal="4dp"
+            android:fontFamily="@font/josefin_sans_regular"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_marginBottom="32dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/adlam_display_regular"
+            android:text="Log In"
+            app:cornerRadius="8dp"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_marginBottom="2dp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/adlam_display_regular"
+            android:text="Sign Up"
+            app:cornerRadius="8dp"
+            style="@style/Widget.Material3.Button.IconButton.Outlined" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
