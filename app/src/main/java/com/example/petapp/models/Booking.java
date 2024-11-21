@@ -8,12 +8,16 @@ public class Order implements Parcelable {
     private String serviceName;
     private String status;
     private String date;
+    private String address;
+    private String notes;
 
-    public Order(int id, String serviceName, String status, String date) {
+    public Order(int id, String serviceName, String status, String date, String address, String notes) {
         this.id = id;
         this.serviceName = serviceName;
         this.status = status;
         this.date = date;
+        this.address = address;
+        this.notes = notes;
     }
 
     // Parcelable constructor
@@ -22,6 +26,8 @@ public class Order implements Parcelable {
         serviceName = in.readString();
         status = in.readString();
         date = in.readString();
+        address = in.readString();
+        notes = in.readString();
     }
 
     // Parcelable Creator
@@ -49,6 +55,8 @@ public class Order implements Parcelable {
         dest.writeString(serviceName);
         dest.writeString(status);
         dest.writeString(date);
+        dest.writeString(address);
+        dest.writeString(notes);
     }
 
     // Existing getters
@@ -56,4 +64,6 @@ public class Order implements Parcelable {
     public String getServiceName() { return serviceName; }
     public String getStatus() { return status; }
     public String getDate() { return date; }
+    public String getAddress() { return address; }
+    public String getNotes() { return notes; }
 }
