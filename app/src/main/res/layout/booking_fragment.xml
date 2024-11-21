@@ -9,19 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your Pet Service Orders"
-            android:textAppearance="?attr/textAppearanceTitleLarge"
-            android:layout_marginBottom="16dp"/>
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ordersRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

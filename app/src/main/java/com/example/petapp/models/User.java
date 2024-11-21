@@ -7,20 +7,26 @@ public class User implements Parcelable {
     private int id;
     private String name;
     private String email;
+    private String contactNumber;
+    private String address;
     private String password;
     private byte[] userIcon;
 
-    public User(String name, String email, String password, byte[] userIcon) {
+    public User(String name, String email, String contactNumber, String address, String password, byte[] userIcon) {
         this.name = name;
         this.email = email;
+        this.contactNumber = contactNumber;
+        this.address = address;
         this.password = password;
         this.userIcon = userIcon;
     }
 
-    public User(int id, String name, String email, String password, byte[] userIcon) {
+    public User(int id, String name, String email, String contactNumber, String address, String password, byte[] userIcon) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.contactNumber = contactNumber;
+        this.address = address;
         this.password = password;
         this.userIcon = userIcon;
     }
@@ -32,6 +38,10 @@ public class User implements Parcelable {
     public void setName(String name) { this.name = name; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+    public String getContactNumber() { return contactNumber; }
+    public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
     public byte[] getUserIcon() { return userIcon; }
@@ -42,6 +52,8 @@ public class User implements Parcelable {
         id = in.readInt();
         name = in.readString();
         email = in.readString();
+        contactNumber = in.readString();
+        address = in.readString();
         password = in.readString();
 
         // Read byte array
@@ -74,6 +86,8 @@ public class User implements Parcelable {
         dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(email);
+        dest.writeString(contactNumber);
+        dest.writeString(address);
         dest.writeString(password);
 
         // Write byte array

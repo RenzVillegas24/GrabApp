@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petapp.R;
 import com.example.petapp.adapters.BookingAdapter;
-import com.example.petapp.models.Order;
+import com.example.petapp.database.BookingDatabaseHelper;
+import com.example.petapp.models.Booking;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookingFragment extends Fragment {
@@ -37,18 +37,20 @@ public class BookingFragment extends Fragment {
         ordersRecyclerView = view.findViewById(R.id.ordersRecyclerView);
         ordersRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Order> orders = createOrdersList();
+        BookingDatabaseHelper bookingDatabaseHelper = new BookingDatabaseHelper(getContext());
+        List<Booking> bookings = bookingDatabaseHelper.getAllBookings();
 
-        bookingAdapter = new BookingAdapter(orders);
+        bookingAdapter = new BookingAdapter(bookings);
         ordersRecyclerView.setAdapter(bookingAdapter);
     }
 
-    private List<Order> createOrdersList() {
-        List<Order> orders = new ArrayList<>();
-        // Example orders - you'll likely fetch these from a database or backend
-        orders.add(new Order(1, "Basic Grooming", "Completed", "2024-02-15"));
-        orders.add(new Order(2, "Vaccination", "Pending", "2024-03-01"));
-        orders.add(new Order(3, "Nail Trimming", "In Progress", "2024-03-10"));
-        return orders;
+    // update the booking list when the fragment is resumed
+    @Override
+    public void onResume() {
+        super.onResume();
+        BookingDatabaseHelper bookingDatabaseHelper = new BookingDatabaseHelper(getContext());
+        List<Booking> bookings = bookingDatabaseHelper.getAllBookings();
+        bookingAdapter = new BookingAdapter(bookings);
+        ordersRecyclerView.setAdapter(bookingAdapter);
     }
 }

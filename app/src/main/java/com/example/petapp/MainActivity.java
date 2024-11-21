@@ -29,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         userSessionManager = new UserSessionManager(this);
         if (userSessionManager.isLoggedIn()) {
             // User is already logged in, navigate to HomeFragment and clear back stack
-            navController.popBackStack(R.id.welcomeFragment, true);
-            navController.navigate(R.id.homeFragment);
+            navController.navigate(R.id.action_welcomeFragment_to_homeFragment);
         }
     }
 }

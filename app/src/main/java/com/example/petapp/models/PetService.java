@@ -72,4 +72,5 @@ public class PetService implements Parcelable {
     public String getLongDescription() { return longDescription; }
     public double getPrice() { return price; }
     public int getIconResId() { return iconResId; }
+
 }

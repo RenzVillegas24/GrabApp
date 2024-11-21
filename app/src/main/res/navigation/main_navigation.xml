@@ -18,7 +18,9 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_welcomeFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -33,13 +35,15 @@
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.petapp.controllers.SignUpFragment"
         android:label="sign_up"
-        tools:layout="@layout/sign_up" >
+        tools:layout="@layout/sign_up_fragment" >
         <action
             android:id="@+id/action_signUpFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
@@ -48,7 +52,9 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -60,7 +66,12 @@
             app:destination="@id/petServiceDetailsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_homeFragment_to_bookingDetailsFragment2"
+            app:destination="@id/bookingDetailsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/petServiceDetailsFragment"
@@ -69,6 +80,15 @@
         tools:layout="@layout/pet_service_details_fragment" >
         <action
             android:id="@+id/action_petServiceDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingDetailsFragment2"
+        android:name="com.example.petapp.controllers.BookingDetailsFragment"
+        android:label="booking_details_fragment"
+        tools:layout="@layout/booking_details_fragment" >
+        <action
+            android:id="@+id/action_bookingDetailsFragment2_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

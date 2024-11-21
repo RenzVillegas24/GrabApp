@@ -19,14 +19,15 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import com.example.petapp.R;
 import com.example.petapp.database.UserDatabaseHelper;
 import com.example.petapp.models.User;
+import com.example.petapp.utils.UserSessionManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -35,20 +36,24 @@ import java.util.regex.Pattern;
 
 public class SignUpFragment extends Fragment {
     private UserDatabaseHelper userDatabaseHelper;
-    private TextInputEditText nameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
-    private TextInputLayout nameInputLayout, emailInputLayout, passwordInputLayout, confirmPasswordInputLayout;
+    private TextInputEditText nameEditText, emailEditText, contactNumberEditText, addressEditText, passwordEditText, confirmPasswordEditText;
+    private TextInputLayout nameInputLayout, emailInputLayout, contactNumberInputLayout, addressInputLayout, passwordInputLayout, confirmPasswordInputLayout;
     private ImageView iconImageView;
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private Bitmap selectedImageBitmap;
+    private UserSessionManager userSessionManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.sign_up, container, false);
+        View view = inflater.inflate(R.layout.sign_up_fragment, container, false);
 
         // Initialize Database Helper
         userDatabaseHelper = new UserDatabaseHelper(requireContext());
+
+        // Initialize User Session Manager
+        userSessionManager = new UserSessionManager(requireContext());
 
         // Initialize Views
         initializeViews(view);
@@ -65,16 +70,22 @@ public class SignUpFragment extends Fragment {
     private void initializeViews(View view) {
         nameEditText = view.findViewById(R.id.nameEditText);
         emailEditText = view.findViewById(R.id.emailEditText);
+        contactNumberEditText = view.findViewById(R.id.contactNumberEditText);
+        addressEditText = view.findViewById(R.id.addressEditText);
         passwordEditText = view.findViewById(R.id.passwordEditText);
         confirmPasswordEditText = view.findViewById(R.id.confirmPasswordEditText);
 
+        iconImageView = view.findViewById(R.id.profileImageView);
+
         nameInputLayout = view.findViewById(R.id.nameTextInputLayout);
         emailInputLayout = view.findViewById(R.id.emailTextInputLayout);
+        contactNumberInputLayout = view.findViewById(R.id.contactNumberTextInputLayout);
+        addressInputLayout = view.findViewById(R.id.addressTextInputLayout);
         passwordInputLayout = view.findViewById(R.id.passwordTextInputLayout);
         confirmPasswordInputLayout = view.findViewById(R.id.confirmPasswordTextInputLayout);
 
-        iconImageView = view.findViewById(R.id.profileImageView);
     }
+
 
     private void initializeImagePickerLauncher() {
         imagePickerLauncher = registerForActivityResult(
@@ -155,32 +166,62 @@ public class SignUpFragment extends Fragment {
         // Name Validation
         String name = nameEditText.getText().toString().trim();
         if (name.isEmpty()) {
+            nameInputLayout.setErrorEnabled(false);
             nameInputLayout.setError("Name cannot be empty");
             isValid = false;
         } else {
             nameInputLayout.setError(null);
+            nameInputLayout.setErrorEnabled(false);
         }
 
         // Email Validation
         String email = emailEditText.getText().toString().trim();
         if (email.isEmpty() || !isValidEmail(email)) {
+            emailInputLayout.setErrorEnabled(false);
             emailInputLayout.setError("Invalid email address");
             isValid = false;
         } else {
             emailInputLayout.setError(null);
+            emailInputLayout.setErrorEnabled(false);
+        }
+
+        // Contact Number Validation
+        String contactNumber = contactNumberEditText.getText().toString().trim();
+        if (contactNumber.isEmpty()) {
+            contactNumberInputLayout.setErrorEnabled(false);
+            contactNumberInputLayout.setError("Contact number cannot be empty");
+            isValid = false;
+        } else {
+            contactNumberInputLayout.setError(null);
+            contactNumberInputLayout.setErrorEnabled(false);
+        }
+
+        // Address Validation
+        String address = addressEditText.getText().toString().trim();
+        if (address.isEmpty()) {
+            addressInputLayout.setErrorEnabled(false);
+            addressInputLayout.setError("Address cannot be empty");
+            isValid = false;
+        } else {
+            addressInputLayout.setError(null);
+            addressInputLayout.setErrorEnabled(false);
         }
 
         // Password Validation
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
         if (password.isEmpty() || password.length() < 6) {
+            passwordInputLayout.setErrorEnabled(false);
             passwordInputLayout.setError("Password must be at least 6 characters");
             isValid = false;
         } else if (!password.equals(confirmPassword)) {
             confirmPasswordInputLayout.setError("Passwords do not match");
+            confirmPasswordInputLayout.setErrorEnabled(false);
             isValid = false;
         } else {
+            passwordInputLayout.setErrorEnabled(false);
             passwordInputLayout.setError(null);
+            confirmPasswordInputLayout.setErrorEnabled(false);
             confirmPasswordInputLayout.setError(null);
         }
 
@@ -195,6 +236,8 @@ public class SignUpFragment extends Fragment {
     private void registerUser() {
         String name = nameEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
+        String contactNumber = contactNumberEditText.getText().toString().trim();
+        String address = addressEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString();
 
         // Check if user already exists
@@ -203,25 +246,43 @@ public class SignUpFragment extends Fragment {
             return;
         }
 
-
         // Convert selected image to bytes
-        byte[] iconBytes;
+        byte[] iconBytes = null;
         if (selectedImageBitmap != null) {
-            iconBytes = UserDatabaseHelper.getBytesFromBitmap(selectedImageBitmap);
-        } else {
-            Bitmap iconBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.vector_man);
-            iconBytes = UserDatabaseHelper.getBytesFromBitmap(iconBitmap);
-        }
+            Bitmap resizedBitmap = resizeAndCropImage(selectedImageBitmap, 480, 480);
+            iconBytes = UserDatabaseHelper.getBytesFromBitmap(resizedBitmap);
+        };
 
-        User newUser = new User(name, email, password, iconBytes);
+        User newUser = new User(name, email, contactNumber, address, password, iconBytes);
         long result = userDatabaseHelper.insertUser(newUser);
 
         if (result != -1) {
             Toast.makeText(requireContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
+            // Save current user in session
+            userSessionManager.saveCurrentUser(newUser);
+
+            // Navigate to HomeFragment
             Navigation.findNavController(requireView()).navigate(R.id.action_signUpFragment_to_homeFragment);
         } else {
             Toast.makeText(requireContext(), "Registration Failed", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private Bitmap resizeAndCropImage(Bitmap originalBitmap, int width, int height) {
+        int originalWidth = originalBitmap.getWidth();
+        int originalHeight = originalBitmap.getHeight();
+        int cropSize = Math.min(originalWidth, originalHeight);
+
+        // Crop the image to the center
+        Bitmap croppedBitmap = Bitmap.createBitmap(
+                originalBitmap,
+                (originalWidth - cropSize) / 2,
+                (originalHeight - cropSize) / 2,
+                cropSize,
+                cropSize
+        );
+
+        // Resize the cropped image
+        return Bitmap.createScaledBitmap(croppedBitmap, width, height, true);
+    }
 }

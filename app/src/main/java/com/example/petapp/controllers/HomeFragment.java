@@ -2,6 +2,7 @@ package com.example.petapp.controllers;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
@@ -94,6 +96,10 @@ public class HomeFragment extends Fragment {
             if (imageBlob != null) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imageBlob, 0, imageBlob.length);
                 userProfileImage.setImageBitmap(bitmap);
+            } else {
+                // get the svg xml vector drawable
+                Drawable drawable = AppCompatResources.getDrawable(requireContext(), R.drawable.vector_man);
+                userProfileImage.setImageDrawable(drawable);
             }
         }
     }
@@ -107,8 +113,6 @@ public class HomeFragment extends Fragment {
         @Override
         public Fragment createFragment(int position) {
             switch (position) {
-                case 0:
-                    return new ServicesFragment();
                 case 1:
                     return new BookingFragment();
                 default:

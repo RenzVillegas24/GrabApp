@@ -71,11 +71,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/add_to_cart"
+            android:text="Book Now"
             android:fontFamily="@font/adlam_display_regular"
-            app:icon="@drawable/ic_cart"
-            app:iconGravity="textStart"
-            app:iconPadding="8dp"
             app:cornerRadius="8dp"
             style="@style/Widget.Material3.Button.IconButton.Filled"/>
 

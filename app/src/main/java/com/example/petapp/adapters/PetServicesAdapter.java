@@ -1,5 +1,6 @@
 package com.example.petapp.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,7 @@ public class PetServicesAdapter extends RecyclerView.Adapter<PetServicesAdapter.
             itemView.setOnClickListener(v -> {
                 if (itemClickListener != null) {
                     itemClickListener.onItemClick(service);
+                    Log.i("Service", "bind: " + service.getTitle());
                 }
             });
 

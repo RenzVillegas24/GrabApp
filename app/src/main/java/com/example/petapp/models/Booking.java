@@ -3,67 +3,85 @@ package com.example.petapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Order implements Parcelable {
+public class Booking implements Parcelable {
     private int id;
-    private String serviceName;
+    private int serviceId;
+    private String bookingDate;
+    private double price;
     private String status;
-    private String date;
+    private String animalType;
     private String address;
-    private String notes;
+    private String additionalNotes;
+    private String paymentMethod;
+    private String paymentStatus;
 
-    public Order(int id, String serviceName, String status, String date, String address, String notes) {
+    public Booking(int id, int serviceId, String bookingDate, double price, String status, String animalType, String address, String additionalNotes, String paymentMethod, String paymentStatus) {
         this.id = id;
-        this.serviceName = serviceName;
+        this.serviceId = serviceId;
+        this.bookingDate = bookingDate;
+        this.price = price;
         this.status = status;
-        this.date = date;
+        this.animalType = animalType;
         this.address = address;
-        this.notes = notes;
+        this.additionalNotes = additionalNotes;
+        this.paymentMethod = paymentMethod;
+        this.paymentStatus = paymentStatus;
     }
 
-    // Parcelable constructor
-    protected Order(Parcel in) {
+    // Parcelable implementation
+    protected Booking(Parcel in) {
         id = in.readInt();
-        serviceName = in.readString();
+        serviceId = in.readInt();
+        bookingDate = in.readString();
+        price = in.readDouble();
         status = in.readString();
-        date = in.readString();
+        animalType = in.readString();
         address = in.readString();
-        notes = in.readString();
-    }
-
-    // Parcelable Creator
-    public static final Creator<Order> CREATOR = new Creator<Order>() {
-        @Override
-        public Order createFromParcel(Parcel in) {
-            return new Order(in);
-        }
-
-        @Override
-        public Order[] newArray(int size) {
-            return new Order[size];
-        }
-    };
-
-    // Parcelable method implementations
-    @Override
-    public int describeContents() {
-        return 0;
+        additionalNotes = in.readString();
+        paymentMethod = in.readString();
+        paymentStatus = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeString(serviceName);
+        dest.writeInt(serviceId);
+        dest.writeString(bookingDate);
+        dest.writeDouble(price);
         dest.writeString(status);
-        dest.writeString(date);
+        dest.writeString(animalType);
         dest.writeString(address);
-        dest.writeString(notes);
+        dest.writeString(additionalNotes);
+        dest.writeString(paymentMethod);
+        dest.writeString(paymentStatus);
     }
 
-    // Existing getters
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Booking> CREATOR = new Creator<Booking>() {
+        @Override
+        public Booking createFromParcel(Parcel in) {
+            return new Booking(in);
+        }
+
+        @Override
+        public Booking[] newArray(int size) {
+            return new Booking[size];
+        }
+    };
+
+    // Getters
     public int getId() { return id; }
-    public String getServiceName() { return serviceName; }
+    public int getServiceId() { return serviceId; }
+    public String getBookingDate() { return bookingDate; }
+    public double getPrice() { return price; }
     public String getStatus() { return status; }
-    public String getDate() { return date; }
+    public String getAnimalType() { return animalType; }
     public String getAddress() { return address; }
-    public String getNotes() { return notes; }
+    public String getAdditionalNotes() { return additionalNotes; }
+    public String getPaymentMethod() { return paymentMethod; }
+    public String getPaymentStatus() { return paymentStatus; }
 }

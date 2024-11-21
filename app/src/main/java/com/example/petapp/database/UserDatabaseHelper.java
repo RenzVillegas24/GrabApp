@@ -20,6 +20,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_CONTACT_NUMBER = "contact_number";
+    private static final String COLUMN_ADDRESS = "address";
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_ICON = "icon";
 
@@ -29,8 +31,11 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NAME + " TEXT, " +
                     COLUMN_EMAIL + " TEXT UNIQUE, " +
+                    COLUMN_CONTACT_NUMBER + " TEXT, " +
+                    COLUMN_ADDRESS + " TEXT, " +
                     COLUMN_PASSWORD + " TEXT, " +
                     COLUMN_ICON + " BLOB)";
+
 
     public UserDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,6 +59,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
 
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_EMAIL, user.getEmail());
+        values.put(COLUMN_CONTACT_NUMBER, user.getContactNumber());
+        values.put(COLUMN_ADDRESS, user.getAddress());
         values.put(COLUMN_PASSWORD, user.getPassword());
         values.put(COLUMN_ICON, user.getUserIcon());
 
@@ -65,7 +72,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_USERS,
-                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_PASSWORD, COLUMN_ICON},
+                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_CONTACT_NUMBER, COLUMN_PASSWORD, COLUMN_ICON},
                 COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null);
@@ -75,6 +82,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
                     cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTACT_NUMBER)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
                     cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_ICON))
             );
@@ -106,7 +115,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_USERS,
-                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_PASSWORD, COLUMN_ICON},
+                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_EMAIL, COLUMN_CONTACT_NUMBER, COLUMN_ADDRESS, COLUMN_PASSWORD, COLUMN_ICON},
                 COLUMN_EMAIL + "=?",
                 new String[]{email},
                 null, null, null, null);
@@ -116,6 +125,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
                     cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTACT_NUMBER)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
                     cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_ICON))
             );
@@ -137,11 +148,13 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 User user = new User(
-                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
-                        cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_ICON))
+                    cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTACT_NUMBER)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)),
+                    cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_ICON))
                 );
                 users.add(user);
             } while (cursor.moveToNext());
@@ -158,6 +171,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_EMAIL, user.getEmail());
+        values.put(COLUMN_CONTACT_NUMBER, user.getContactNumber());
+        values.put(COLUMN_ADDRESS, user.getAddress());
         values.put(COLUMN_PASSWORD, user.getPassword());
         values.put(COLUMN_ICON, user.getUserIcon());
 
