@@ -80,7 +80,7 @@ public class PetServicesAdapter extends RecyclerView.Adapter<PetServicesAdapter.
             serviceIcon.setImageResource(service.getIconResId());
             serviceTitle.setText(service.getTitle());
             serviceDescription.setText(service.getDescription());
-            servicePrice.setText(String.format(Locale.getDefault(), "$%.2f", service.getPrice()));
+            servicePrice.setText(String.format(Locale.getDefault(), "₱%.2f", service.getPrice()));
 
             // Make entire item view clickable
             itemView.setOnClickListener(v -> {

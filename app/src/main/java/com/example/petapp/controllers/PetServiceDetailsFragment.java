@@ -59,7 +59,7 @@ public class PetServiceDetailsFragment extends Fragment {
         // Set data from PetService
         if (petService != null) {
             serviceTitleTextView.setText(petService.getTitle());
-            servicePriceTextView.setText(String.format(Locale.getDefault(),"$%.2f", petService.getPrice()));
+            servicePriceTextView.setText(String.format(Locale.getDefault(),"₱%.2f", petService.getPrice()));
             serviceLongDescriptionTextView.setText(petService.getLongDescription());
             iconView.setImageResource(petService.getIconResId());
         }

@@ -76,7 +76,7 @@ public class BookingDetailsFragment extends Fragment {
 
         if (petService != null) {
             serviceTitleTextView.setText(petService.getTitle());
-            servicePriceTextView.setText(String.format(Locale.getDefault(), "$%.2f", petService.getPrice()));
+            servicePriceTextView.setText(String.format(Locale.getDefault(), "₱%.2f", petService.getPrice()));
             iconView.setImageResource(petService.getIconResId());
         }
 
